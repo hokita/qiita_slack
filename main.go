@@ -103,10 +103,13 @@ func getArticleSectionBlock(article Edge) slack.Block {
 	title := fmt.Sprintf(
 		"<%s|%s>", articleURL.String(), article.Node.Title,
 	)
+	author := fmt.Sprintf(
+		"Author: %s", article.Node.Author.URLName,
+	)
 	likesCount := fmt.Sprintf(
 		"%s likes", strconv.Itoa(article.Node.LikesCount),
 	)
-	text := fmt.Sprintf("%s\n%s", title, likesCount)
+	text := fmt.Sprintf("%s\n%s\n%s", title, author, likesCount)
 
 	textBlockObject := slack.NewTextBlockObject(
 		"mrkdwn",
